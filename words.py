@@ -3,5 +3,5 @@ def countw():
     k=f.read()
     p=k.split()
     g=len(p)
-    print(g)
+    print("The Number of Words in the File is:",g)
 countw()
