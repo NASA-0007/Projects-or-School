@@ -60,6 +60,7 @@ while True:
         i=delete(Hostel,Students,Rooms)
         if i=="underflow":
             print("Stack is Empty")
+            print()
         else:
             print("Element Deleted",i)
     elif a==3:
