@@ -55,6 +55,7 @@ while True:
         i=int(input("Enter the Hostel Number: "))
         j=int(input("Enter the Total Number of Students: "))
         k=int(input("Enter the Total Number of Rooms: "))
+        print()
         add(Hostel,Students,Rooms,i,j,k)
     elif a==2:
         i=delete(Hostel,Students,Rooms)
