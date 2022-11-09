@@ -23,17 +23,14 @@ def menu():
                 empdet.writerow(dd)
             f.close()
         elif ch==2:
-            fh=open("emp_det.csv")
+            fh=open("emp_det.csv",newline='\r\n')
             print()
             kk=input("Enter the Department ID to be Searched: ")
             empread=csv.reader(fh)
             for j in empread:
-                gg=len(j)
-                while gg%10!=0:
-                    g = j[0]
-                    k = j[1]
-                    h = j[2]
-                    gg-=1
+                g = j[0]
+                k = j[1]
+                h = j[2]
             if kk==g:
                 print()
                 print("Department ID:",g,"Name:",k,"City:",h)
