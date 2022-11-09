@@ -14,15 +14,12 @@ def add():
         userdeta.writerow(c)
     f.close()
 def create():
-    fh = open(r"userdet.csv")
+    fh = open(r"userdet.csv",newline='\r\n')
     a = input("Enter the User ID to Search: ")
     userdet = csv.reader(fh)
-    for j in userdet:
-        gg=len(j)
-        while gg%10!=0:   
-            g = j[0]
-            k = j[1]
-            gg-=1
+    for j in userdet:  
+        g = j[0]
+        k = j[1]
     if g == a:
         print()
         print("The User With Id:",a,", has Password:",k)
