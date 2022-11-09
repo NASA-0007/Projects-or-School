@@ -7,6 +7,7 @@ def add():
     userdeta.writerow(head)
     for i in range(u):
         a = input("Enter the User ID: ")
+
         b = input("Enter the Password: ")
         print()
         c = ([a, b])
@@ -23,8 +24,10 @@ def create():
             k = j[1]
             gg-=1
     if g == a:
+        print()
         print("The User With Id:",a,", has Password:",k)
     else:
+        print()
         print("The User Doesn't Exist")
             
     fh.close()
