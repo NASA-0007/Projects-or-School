@@ -27,15 +27,17 @@ def menu():
             print()
             kk=input("Enter the Department ID to be Searched: ")
             empread=csv.reader(fh)
+            got=False
             for j in empread:
                 g = j[0]
                 k = j[1]
                 h = j[2]
-            if kk==g:
-                print()
-                print("Department ID:",g,"Name:",k,"City:",h)
-                print()
-            else:
+                if kk==g:
+                    print()
+                    print("Department ID:",g,"Name:",k,"City:",h)
+                    print()
+                    got=True
+            if got==False:
                 print()
                 print("The Department ID doesn't Exist")
                 print()
