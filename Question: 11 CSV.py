@@ -12,7 +12,7 @@ def csvfile():
         studrec=([r,n,m])
         studdet.writerow(studrec)
     f.close()
-    fh=open(r"C:\Users\User\Documents\student.csv","r",newline="")
+    fh=open(r"C:\Users\User\Documents\student.csv","r",newline='\r\n')
     studred=csv.reader(fh)
     for j in studred:
         print(j)
