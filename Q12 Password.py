@@ -17,13 +17,15 @@ def create():
     fh = open(r"userdet.csv",newline='\r\n')
     a = input("Enter the User ID to Search: ")
     userdet = csv.reader(fh)
+    got=False
     for j in userdet:  
         g = j[0]
         k = j[1]
-    if g == a:
-        print()
-        print("The User With Id:",a,", has Password:",k)
-    else:
+        if g == a:
+            print()
+            print("The User With Id:",a,", has Password:",k)
+            got=True
+    if got==False:
         print()
         print("The User Doesn't Exist")
             
