@@ -1,9 +1,9 @@
 import csv
 def menu():
     while True:
-        a=print("1.Create CSV File")
-        b=print("2.Search")
-        c=print("3.Exit")
+        print("1.Create CSV File")
+        print("2.Search")
+        print("3.Exit")
         print()
         ch=int(input("Enter a Choice: "))
         if ch==1:
