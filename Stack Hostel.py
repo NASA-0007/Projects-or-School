@@ -17,10 +17,14 @@ def delete(x):
             top=len(x)-1
         return i
 def display(x):
-  l=len(x)
-  print("Hostel Number\tTotal Students\tTotal Rooms")
-  for i in range(l-1,-1,-1):
-      print(x[i][0],"\t\t",x[i][1],"\t\t",x[i][2])
+    a=empty(x)
+    if a=="underflow":
+        print("The Stack is Empty")
+    else:
+        l=len(x)
+        print("Hostel Number\tTotal Students\tTotal Rooms")
+        for i in range(l-1,-1,-1):
+            print(x[i][0],"\t\t",x[i][1],"\t\t",x[i][2])
 Hostel=[]
 top=None
 while True:
@@ -45,10 +49,10 @@ while True:
         else:
             print("Element Deleted",i)
     elif a==3:
-        print()
         display(Hostel)
         print()
     elif a==4:
         break
     else:
         print("Enter a Valid Input")
+        print()
