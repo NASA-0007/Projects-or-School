@@ -13,7 +13,7 @@ def reverse(x):
         aa=len(x)
         b=0
         while aa!=b:
-            k=x.pop(-1)
+            k=x.pop()
             b+=1
             if len(x)==0:
                 top=None
