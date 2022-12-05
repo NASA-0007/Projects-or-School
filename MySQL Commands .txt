@@ -1,0 +1,197 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 83
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database emp1;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use emp1
+Database changed
+mysql> create table employee1(NO int,Name varchar(20),Salary int,Zone varchar(20),Age int,Grade char(5),Dept_No int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into employee1 values(1,'Ram',30000,'West',28,'A',10);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into employee1 values(2,'Raja',20000,'East',30,'B',40);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee1 values(3,'Ramsjo',25000,'North',29,'A',10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee1 values(4,'Naveen',35000,'South',31,'A+',20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee1 values(5,'Sreejith',52000,'North',42,'A',40);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee1 values(6,'Sreehari',52500,'North-East',42,'B',20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee1 values(7,'Arjun',60000,'South-West',50,'A',10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select zone from employee1;
++------------+
+| zone       |
++------------+
+| West       |
+| East       |
+| North      |
+| South      |
+| North      |
+| North-East |
+| South-West |
++------------+
+7 rows in set (0.01 sec)
+
+mysql> select name,salary from employee1 where Dept_No not in (20);
++----------+--------+
+| name     | salary |
++----------+--------+
+| Ram      |  30000 |
+| Raja     |  20000 |
+| Ramsjo   |  25000 |
+| Sreejith |  52000 |
+| Arjun    |  60000 |
++----------+--------+
+5 rows in set (0.01 sec)
+
+mysql> select * from employee1 where salary between 32000 and 38000;
++------+--------+--------+-------+------+-------+---------+
+| NO   | Name   | Salary | Zone  | Age  | Grade | Dept_No |
++------+--------+--------+-------+------+-------+---------+
+|    4 | Naveen |  35000 | South |   31 | A+    |      20 |
++------+--------+--------+-------+------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> select name,salary,age from employee1 where name like "_A%";
++--------+--------+------+
+| name   | salary | age  |
++--------+--------+------+
+| Ram    |  30000 |   28 |
+| Raja   |  20000 |   30 |
+| Ramsjo |  25000 |   29 |
+| Naveen |  35000 |   31 |
++--------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select* from employee1 where dept_no=30 and salary>35000;
+Empty set (0.00 sec)
+
+mysql> select sum(salary),avg(salary) from employee1;
++-------------+-------------+
+| sum(salary) | avg(salary) |
++-------------+-------------+
+|      274500 |  39214.2857 |
++-------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select min(salary),max(salary) from employee where dept_no=10;
+ERROR 1146 (42S02): Table 'emp1.employee' doesn't exist
+mysql> select min(salary),max(salary) from employee1 where dept_no=10;
++-------------+-------------+
+| min(salary) | max(salary) |
++-------------+-------------+
+|       25000 |       60000 |
++-------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from employee where dept_no=10;
+ERROR 1146 (42S02): Table 'emp1.employee' doesn't exist
+mysql> select count(*) from employee1 where dept_no=10;
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee1 order by salary;
++------+----------+--------+------------+------+-------+---------+
+| NO   | Name     | Salary | Zone       | Age  | Grade | Dept_No |
++------+----------+--------+------------+------+-------+---------+
+|    2 | Raja     |  20000 | East       |   30 | B     |      40 |
+|    3 | Ramsjo   |  25000 | North      |   29 | A     |      10 |
+|    1 | Ram      |  30000 | West       |   28 | A     |      10 |
+|    4 | Naveen   |  35000 | South      |   31 | A+    |      20 |
+|    5 | Sreejith |  52000 | North      |   42 | A     |      40 |
+|    6 | Sreehari |  52500 | North-East |   42 | B     |      20 |
+|    7 | Arjun    |  60000 | South-West |   50 | A     |      10 |
++------+----------+--------+------------+------+-------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select dept_no,count(*) from employee group ny dept_no;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ny dept_no' at line 1
+mysql> select dept_no,count(*) from employee group by dept_no;
+ERROR 1146 (42S02): Table 'emp1.employee' doesn't exist
+mysql> select dept_no,count(*) from employee1 group by dept_no;
++---------+----------+
+| dept_no | count(*) |
++---------+----------+
+|      10 |        3 |
+|      40 |        2 |
+|      20 |        2 |
++---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> delete from employee1 where name="arjun";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee1;
++------+----------+--------+------------+------+-------+---------+
+| NO   | Name     | Salary | Zone       | Age  | Grade | Dept_No |
++------+----------+--------+------------+------+-------+---------+
+|    1 | Ram      |  30000 | West       |   28 | A     |      10 |
+|    2 | Raja     |  20000 | East       |   30 | B     |      40 |
+|    3 | Ramsjo   |  25000 | North      |   29 | A     |      10 |
+|    4 | Naveen   |  35000 | South      |   31 | A+    |      20 |
+|    5 | Sreejith |  52000 | North      |   42 | A     |      40 |
+|    6 | Sreehari |  52500 | North-East |   42 | B     |      20 |
++------+----------+--------+------------+------+-------+---------+
+6 rows in set (0.00 sec)
+
+mysql> alter table employee1 add bonus decimal(4,2);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee1;
++------+----------+--------+------------+------+-------+---------+-------+
+| NO   | Name     | Salary | Zone       | Age  | Grade | Dept_No | bonus |
++------+----------+--------+------------+------+-------+---------+-------+
+|    1 | Ram      |  30000 | West       |   28 | A     |      10 |  NULL |
+|    2 | Raja     |  20000 | East       |   30 | B     |      40 |  NULL |
+|    3 | Ramsjo   |  25000 | North      |   29 | A     |      10 |  NULL |
+|    4 | Naveen   |  35000 | South      |   31 | A+    |      20 |  NULL |
+|    5 | Sreejith |  52000 | North      |   42 | A     |      40 |  NULL |
+|    6 | Sreehari |  52500 | North-East |   42 | B     |      20 |  NULL |
++------+----------+--------+------------+------+-------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> update employee1 set salary=salary+2000;
+Query OK, 6 rows affected (0.00 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> select * from employee1;
++------+----------+--------+------------+------+-------+---------+-------+
+| NO   | Name     | Salary | Zone       | Age  | Grade | Dept_No | bonus |
++------+----------+--------+------------+------+-------+---------+-------+
+|    1 | Ram      |  32000 | West       |   28 | A     |      10 |  NULL |
+|    2 | Raja     |  22000 | East       |   30 | B     |      40 |  NULL |
+|    3 | Ramsjo   |  27000 | North      |   29 | A     |      10 |  NULL |
+|    4 | Naveen   |  37000 | South      |   31 | A+    |      20 |  NULL |
+|    5 | Sreejith |  54000 | North      |   42 | A     |      40 |  NULL |
+|    6 | Sreehari |  54500 | North-East |   42 | B     |      20 |  NULL |
++------+----------+--------+------------+------+-------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql>
