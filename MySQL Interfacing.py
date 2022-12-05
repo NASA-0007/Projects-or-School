@@ -7,13 +7,13 @@ a=sql.connect(host='localhost',user='root',passwd='computer',database='stud_det'
 cur=a.cursor()
 cur.execute('create table student(Roll_no int,Name varchar(20),Class varchar(5));')
 def display():
-    a=sql.connect(host='localhost',user='root',passwd='computer',database='stud_det')
-    cur=a.cursor()
+    #a=sql.connect(host='localhost',user='root',passwd='computer',database='stud_det')
+    #cur=a.cursor()
     cur.execute('select * from student;')
     print(cur.fetchall())
 def insert():
-    a=sql.connect(host='localhost',user='root',passwd='computer',database='stud_det')
-    cur=a.cursor()
+    #a=sql.connect(host='localhost',user='root',passwd='computer',database='stud_det')
+    #cur=a.cursor()
     r=int(input("Enter the Roll No: "))
     n=input("Enter the Name: ")
     c=input("Enter the Class: ")
